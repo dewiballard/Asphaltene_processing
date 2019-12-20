@@ -11,9 +11,9 @@ import matplotlib.pyplot as plt
 import scipy.optimize
 import math
 
-data = open('RA_fovern_overtone3.csv', 'r')
+data = open('IAA_fovern_overtone3.csv', 'r')
 
-SAMPLE = 'RA 0.1 g/L'
+SAMPLE = 'IAA 0.1 g/L'
 
 ####################  Plot raw f/n with time #################
 def runningmean(x, N):
@@ -59,7 +59,7 @@ ydata = np.array(unitchange)
 def fit(x, a, b, c):
     return -a * np.exp(-b * x) + c
 
-variables = np.array([8.59779897e+00, 7.54010406e-03, 9.79266641e+00]) #copy values from printed ones above outputted figure
+variables = np.array([2.26813118e+01, 2.82179384e-03, 2.48165285e+01]) #copy values from printed ones above outputted figure
 #this next line will print out the fitted values for a b and c
 print(scipy.optimize.curve_fit(fit, xdata, ydata, variables))
 plt.plot(xdata, fit(xdata, *variables), 'r--')
