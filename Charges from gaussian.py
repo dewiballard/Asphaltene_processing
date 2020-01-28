@@ -7,8 +7,7 @@ Created on Thu Aug 15 16:52:05 2019
 """
 
 #########################Enter document name here############################
-transform = 'DBSA.log'
-
+transform = 'IAA_S1.log'
 
 import os
 from decimal import *
