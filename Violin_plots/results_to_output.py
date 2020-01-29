@@ -54,13 +54,16 @@ vdW_total = top_thousand[0]
 with open('Output.csv','w') as file:
 
     x = 0
-    file.write('0,sample,vdW,hbond,electro,total\n')
+    file.write('0,sample,group,vdW,hbond,electro,total\n')
     
     for i in range(0,n_points):
         x = x + 1
         data_point = top_thousand[i]
         if data_point[0] > data_point[3]:
-            vdW_contribution = data_point[0]/data_point[3]
+            if data_point[0] < 0:
+                vdW_contribution = data_point[0]/data_point[3]
+            else:
+                vdW_contribution = 0
         else:
             vdW_contribution = 1
         if data_point[1] > data_point[3]:
@@ -78,7 +81,7 @@ with open('Output.csv','w') as file:
         else:
             electro_contribution = 1
         total_interaction = data_point[3]
-        file.write(str(x) + ',' + 'RA_Sx,'+ str(vdW_contribution) + ',' + str(hbond_contribution)+ ',' + str(electro_contribution) + ',' + str(total_interaction) + '\n')
+        file.write(str(x) + ',' + 'IAA'+ ',' + 'Sx' + ',' + str(vdW_contribution) + ',' + str(hbond_contribution)+ ',' + str(electro_contribution) + ',' + str(total_interaction) + '\n')
 
 
 
