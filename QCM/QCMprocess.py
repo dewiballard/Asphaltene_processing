@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import scipy.optimize
 import math
 
-data = open('RA_fovern_overtone3.csv', 'r')
+data = open('IAA_fovern_overtone3.csv', 'r')
 
 SAMPLE = 'RA 0.1 g/L'
 
@@ -27,7 +27,7 @@ for line in data:
     xaxis.append(float(a))
     yaxisuntreated.append(float(b))
 
-yaxis = runningmean(yaxisuntreated,1)
+yaxis = runningmean(yaxisuntreated,1) / 2 # two sides to the sensor
 
 plt.figure()
 plt.plot(xaxis, yaxis)
@@ -49,7 +49,6 @@ plt.xlabel('Time (mins)')
 plt.xlim(0,1000)
 plt.legend((SAMPLE,),loc='upper right')
 
-
 ######## Fitting natural exponent curve to the QCM data #############
 
 #data to be fitted
@@ -59,10 +58,11 @@ ydata = np.array(unitchange)
 def fit(x, a, b, c):
     return -a * np.exp(-b * x) + c
 
-variables = np.array([8.59779897e+00, 7.54010406e-03, 9.79266641e+00]) #copy values from printed ones above outputted figure
+variables = np.array([1.13231025e+01, 2.80784540e-03, 1.24200736e+01]) #copy values from printed ones above outputted figure
 #this next line will print out the fitted values for a b and c
 print(scipy.optimize.curve_fit(fit, xdata, ydata, variables))
 plt.plot(xdata, fit(xdata, *variables), 'r--')
+plt.savefig('out.png')
 
 ############# Code to calculate mg/m2 at 1000 min #############
 
@@ -89,7 +89,7 @@ report.write(str(B))
 report.write('\n')
 report.write('where C is: ')
 report.write(str(C))
-report.write('in -a * np.exp(-b * x) + c')
+report.write('\nin -a * np.exp(-b * x) + c')
 report.write('\n')
 report.write('\n')
 report.write('Data for plotting is:')
