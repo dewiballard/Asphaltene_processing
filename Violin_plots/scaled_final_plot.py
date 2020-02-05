@@ -21,9 +21,8 @@ import pandas as pd
 
 import seaborn as sns
    
-df = pd.read_csv('scaled_data.csv')
+df = pd.read_csv('scaled_data.csv', error_bad_lines=False)
 
-order = ["HC", "Nx / NxOy", "Ox", "OxSy", "Sx"]
 hue_order = ["RA", "IAA"]
 
 sns.set(style='white', font_scale=1.5)

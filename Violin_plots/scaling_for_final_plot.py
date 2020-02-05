@@ -12,18 +12,18 @@ csv_header = '0,sample,group,vdW,hbond,electro,total'
 csv_out = 'Scaled_data.csv'
 
 tot1 = (32+11+13+12+23)
-RA_HC = int((32/tot1)*100)
-RA_Nx = int((11/tot1)*100)
-RA_Ox = int((13/tot1)*100)
-RA_OxSy = int((12/tot1)*100)
-RA_Sx = int((23/tot1)*100)
+RA_HC = round((32/tot1)*100)
+RA_Nx = round((11/tot1)*100)
+RA_Ox = round((13/tot1)*100)
+RA_OxSy = round((12/tot1)*100)
+RA_Sx = round((23/tot1)*100)
 
 tot2 = (22+8+27+25+11)
-IAA_HC = int((22/tot2)*100)
-IAA_NxOy = int((8/tot2)*100)
-IAA_Ox = int((27/tot2)*100)
-IAA_OxSy = int((25/tot2)*100)
-IAA_Sx = int((11/tot2)*100)
+IAA_HC = round((22/tot2)*100)
+IAA_NxOy = round((8/tot2)*100)
+IAA_Ox = round((27/tot2)*100)
+IAA_OxSy = round((25/tot2)*100)
+IAA_Sx = round((11/tot2)*100)
 
 csv_dir = os.getcwd()
 
